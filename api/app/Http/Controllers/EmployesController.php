@@ -19,7 +19,8 @@ class EmployesController extends Controller
      FECHA_CREACION,
      SEXO,
      PUBLIC.SEX.DESCRIPTION AS SEX_DESCRIPTION,
-     SALARIO::NUMERIC(12,2)
+     SALARIO::NUMERIC(12,2),
+     DEPARTMENT
  FROM PUBLIC.EMPLOYES
  JOIN PUBLIC.SEX ON SEX.ID =PUBLIC.EMPLOYES.SEXO
  JOIN PUBLIC.MARITAL_STATUS ON PUBLIC.MARITAL_STATUS.ID=PUBLIC.EMPLOYES.ESTADO ORDER BY EMPLOYES.ID ASC';
@@ -35,10 +36,10 @@ class EmployesController extends Controller
             ESTADO,
             FECHA_CREACION,
             SEXO,
-            SALARIO)
-        VALUES (default, ?, ?, default, ?, ?);",
-            [$request->nombre, $request->estado, $request->sexo, $request->salario]
-        );
+            SALARIO,
+            DEPARTMENT)
+        VALUES (default, ?, ?, default, ?, ?,?);",
+            [$request->nombre, $request->estado, $request->sexo, $request->salario, $request->department]);;
 
 
         return "ok";
@@ -54,7 +55,7 @@ class EmployesController extends Controller
                 SEXO = ?,
                 SALARIO = ?
             WHERE ID=?",
-            [$request->nombre, $request->estado, $request->sexo, $request->salario,$request->id]
+            [$request->nombre, $request->estado, $request->sexo, $request->salario,$request->id,$request->department]
         );
 
 

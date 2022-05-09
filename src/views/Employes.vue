@@ -90,6 +90,16 @@
                             label="Salario"
                           ></v-text-field>
                         </v-col>
+
+                         <v-col cols="12" sm="6" md="3">
+                          <v-text-field
+                            v-model="newEmployes.department"
+                            label="Departamento"
+                          ></v-text-field>
+                        </v-col>
+
+
+                        
                       </v-row>
                     </v-container>
                   </v-card-text>
@@ -166,6 +176,7 @@ export default {
       { text: "Fecha Creacion", value: "fecha_creacion" },
       { text: "Sexo", value: "sex_description" },
       { text: "Salario", value: "salario" },
+      {text:"Departamento",value:"department"},
 
       { text: "Actions", value: "actions", sortable: false },
     ],
@@ -287,6 +298,7 @@ export default {
             estado: this.newEmployes.estado,
             sexo: this.newEmployes.sexo,
             salario: this.newEmployes.salario,
+            department: this.newEmployes.department
           }),
         };
         const response = await fetch(api + "employes", requestOptions);
@@ -312,6 +324,7 @@ export default {
             estado: this.newEmployes.estado,
             sexo: this.newEmployes.sexo,
             salario: this.newEmployes.salario,
+            department: this.newEmployes.department
           }),
         };
         const response = await fetch(api + "employes", requestOptions2);
